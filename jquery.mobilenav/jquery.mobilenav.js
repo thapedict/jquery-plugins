@@ -66,6 +66,9 @@
             } else {
                 FULLMENU = FULLMENU.eq(0).parent();
             }
+
+            // add class to show main menu has mobilenav class
+            FULLMENU.addClass('full-menu-mobilenav');
             
             OPTIONS = $.extend({}, $.fn.mobilenav.defaults, options);
 

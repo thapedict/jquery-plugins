@@ -105,6 +105,7 @@
     display: inline-block;
 }
 
+.full-menu-mobilenav .drop-menu-icon,
 #mobilenav-menu .drop-menu-icon {
     float: right;
     padding: 0.15em 0;
