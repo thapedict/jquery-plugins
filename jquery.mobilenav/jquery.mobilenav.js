@@ -111,7 +111,7 @@
             
             initButton(); // hanlde the button to show and hide the menu
             
-            submenuClick(); // handle submenu's
+            initSubmenuClick(); // handle submenu's
             
             // if click is not handled hide menu
             $(document).on('click', hideMenu);
@@ -219,7 +219,7 @@
         };
         
         // click on menu to show submenu
-        var submenuClick = function () {
+        var initSubmenuClick = function () {
             
             MOBILEMENU.find('a').each(
                 function () {
