@@ -20,21 +20,18 @@
     };
     
     $.fn.mobilenav.defaults = {
-        id:                 'mobilenav-mobile',       // id top be applied to the menu wrapper
+        id:                 'mobilenav-mobile',     // id top be applied to the menu wrapper
         collapsed:          'collapsed',            // class to be used when in mobile mode
         style:              'from-top',             // style to show the mobilenav
         breakAt:            768,                    // maximum screen width to apply collapsed
-        parentWidth:        false,                  // activate on parent width or window width
+        parentWidth:        false,                  // collapse on parent width or window width
         beforeMenu:         $.noop,                 // function to run before the showing mobile menu (runs after button click)
-        // classes to toggle when menu button is clicked
-        toggleButtonClasses: {
+        toggleButtonClasses: {                      // classes to toggle when menu button is clicked
             hidden: 'fa-bars',
             shown: 'fa-times'
         },
-        submenu:            'ul.sub-menu',          // css selector used to recognise submenu
         beforeSubmenu:      $.noop,                 // before the submenu is shown
-        // classes to toggle on arrow when showing submenu
-        toggleSubmenuClasses: {
+        toggleSubmenuClasses: {                     // classes to toggle on arrow when showing submenu
             hidden: 'fa-chevron-down',
             shown: 'fa-chevron-up'
         },
