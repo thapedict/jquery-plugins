@@ -100,8 +100,6 @@
             $('body').append(MOBILEMENU);
             
             BUTTON.addClass('mobilenav-menu-toggle-button');
-            
-            BUTTON.data('offset', BUTTON.offset());
 
             BUTTON_ELEMENT = BUTTON.hasClass('fas') ? BUTTON: BUTTON.children('.fas').eq(0);
             
