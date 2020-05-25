@@ -20,7 +20,7 @@
     };
     
     $.fn.mobilenav.defaults = {
-        id:                 'mobilenav-menu',       // id top be applied to the menu wrapper
+        id:                 'mobilenav-mobile',       // id top be applied to the menu wrapper
         collapsed:          'collapsed',            // class to be used when in mobile mode
         style:              'from-top',             // style to show the mobilenav
         breakAt:            768,                    // maximum screen width to apply collapsed
@@ -67,7 +67,7 @@
                 FULLMENU = FULLMENU.eq(0).parent();
             }
 
-            // add class to show main menu has mobilenav class
+            // add class to show main menu has mobilenav
             FULLMENU.addClass('full-menu-mobilenav');
             
             OPTIONS = $.extend({}, $.fn.mobilenav.defaults, options);
