@@ -78,26 +78,9 @@
                 addSubmenuIcon();
                 submenuIconClick();
             }
-            
-            MOBILEMENU = FULLMENU.clone(true);
-            
-            // clear classes and id associated with actual menu
-            MOBILEMENU.attr('class', '').children('ul').each(
-                function () {
-                    $(this).attr('id', '').attr('class', '');
-                } 
-            );
-            MOBILEMENU.attr('id', OPTIONS.id);
-            
-            // hide menu if we are not sliding from sides
-            if (isSlide() ) {
-                MOBILEMENU.addClass(OPTIONS.style + " does-slide");
-                addCloseButtton();
-            } else {
-                MOBILEMENU.hide();                
-            }
-            
-            $('body').append(MOBILEMENU);
+
+            // clone main menu
+            cloneMainMenu();
             
             BUTTON.addClass('mobilenav-menu-toggle-button');
 
@@ -123,6 +106,28 @@
                 }
             );
         };
+
+        function cloneMainMenu() {
+            MOBILEMENU = FULLMENU.clone(true);
+            
+            // clear classes and id associated with actual menu
+            MOBILEMENU.attr('class', '').children('ul').each(
+                function () {
+                    $(this).attr('id', '').attr('class', '');
+                } 
+            );
+            MOBILEMENU.attr('id', OPTIONS.id);
+            
+            // hide menu if we are not sliding from sides
+            if (isSlide() ) {
+                MOBILEMENU.addClass(OPTIONS.style + " does-slide");
+                addCloseButtton();
+            } else {
+                MOBILEMENU.hide();                
+            }
+            
+            $('body').append(MOBILEMENU);
+        }
         
         // window resizing
         var resize = function () {
