@@ -111,8 +111,6 @@
             
             initButton(); // hanlde the button to show and hide the menu
             
-            initSubmenuClick(); // handle submenu's
-            
             // if click is not handled hide menu
             $(document).on('click', hideMenu);
 
@@ -215,44 +213,6 @@
             MOBILEMENU.removeClass(OPTIONS.collapsed);
 
             hideAllSubmenus(MOBILEMENU.find('ul'));
-            
-        };
-        
-        // click on menu to show submenu
-        var initSubmenuClick = function () {
-            
-            MOBILEMENU.find('a').each(
-                function () {
-                
-                    var ANCHOR = $(this);
-                
-                    if (ANCHOR.siblings().length ) {
-                    
-                        ANCHOR.on(
-                            'click', function ( e ) {
-                                var _SIBLING = ANCHOR.siblings(OPTIONS.submenu);
-                        
-                                if (_SIBLING.length) {
-                                
-                                    if (_SIBLING.hasClass(OPTIONS.collapsed) ) {
-                                          _SIBLING.slideUp();
-                                    } else {
-                                             _SIBLING.slideDown();
-                                             e.preventDefault();
-                                    }
-                            
-                                    e.stopPropagation(); // because we handled the event
-                            
-                                    _SIBLING.toggleClass(OPTIONS.collapsed);
-                                }
-                        
-                            } 
-                        );
-                    
-                    }
-                                
-                } 
-            );
             
         };
         
