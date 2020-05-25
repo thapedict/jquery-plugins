@@ -49,7 +49,7 @@
             BREAKAT;        // stores the breakat value
         
         // initialization
-        var init = function () {
+        function init() {
             
             /*
             I assume that the value of the 'for' attribute of the toggle button is a selector
@@ -130,7 +130,7 @@
         }
         
         // window resizing
-        var resize = function () {
+        function resize() {
             
             // hide menu
             hideMenu();
@@ -171,7 +171,7 @@
         };
         
         // init BUTTON to handle click to toggle menu
-        var initButton = function () {
+        function initButton() {
             
             BUTTON.on(
                 'click', function ( e ) {
@@ -190,7 +190,7 @@
         };
         
         // show the menu
-        var showMenu = function () {
+        function showMenu() {
             
             if(!isSlide()){
                 MOBILEMENU.slideDown();
@@ -204,7 +204,7 @@
         };
         
         // hide the menu
-        var hideMenu = function () {
+        function hideMenu() {
             
             if(!isSlide()){
                 MOBILEMENU.slideUp();
@@ -220,7 +220,7 @@
         };
         
         // check to see if menu slides from side
-        var isSlide = function () {
+        function isSlide() {
             
             if (OPTIONS.style === 'from-left' || OPTIONS.style === 'from-right' ) {
                 return true;
@@ -231,7 +231,7 @@
         };
 
         // adds a close button
-        var addCloseButtton = function() {
+        function addCloseButtton() {
 
             MOBILEMENU.prepend('<div id="close-button-wrap"><a id="close-button" class="fas fa-times"></a></div>');
             MOBILEMENU.children('#close-button').on('click', hideMenu);
@@ -239,7 +239,7 @@
         }
         
         // add submenus icons
-        var addSubmenuIcon = function () {
+        function addSubmenuIcon() {
 
             FULLMENU.find('.' + OPTIONS.hasSubmenuClass).each(function(){
                 $(this).prepend('<i class="drop-menu-icon fas '+ OPTIONS.toggleSubmenuClasses.hidden +'"></i>');
@@ -248,7 +248,7 @@
         };
 
         // handle the click of a submenu icon
-        var submenuIconClick = function() {
+        function submenuIconClick() {
 
             FULLMENU.find('.drop-menu-icon').on(
                 'click',
@@ -271,7 +271,7 @@
         }
 
         // hide all submenuss
-        var hideAllSubmenus = function( menu ) {
+        function hideAllSubmenus(menu) {
 
             menu.find('ul').each(
                 function(){
@@ -282,7 +282,7 @@
         }
 
         // hide a single submenu
-        var hideSubmenu = function( submenu ) {
+        function hideSubmenu(submenu) {
 
             submenu.slideUp().removeClass(OPTIONS.collapsed);
 
