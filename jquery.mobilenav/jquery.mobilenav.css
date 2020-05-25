@@ -5,6 +5,50 @@
  * License: GNU General Public License v2 or later
  */
 
+.mobilenav-main .nav-menu {
+    padding: 0;
+    margin: 0;
+}
+
+.mobilenav-main ul {
+    list-style: none;
+}
+
+.mobilenav-main .nav-menu > li {
+    display: inline-block;
+}
+
+.mobilenav-main .nav-menu li {
+    list-style: none;
+    margin: 0;
+    padding: 0.5em 0.8em;
+    position: relative;
+}
+
+.mobilenav-main .nav-menu a {
+    text-decoration: none;
+}
+
+.mobilenav-main .nav-menu .sub-menu,
+.mobilenav-main .nav-menu .children {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 2;
+    margin: 0;
+    padding: 0;
+    min-width: 200px;
+    background-color: #fff;
+    display: none;
+}
+
+.mobilenav-main .nav-menu .sub-menu .sub-menu,
+.mobilenav-main .nav-menu .children .children {
+    min-width: 100%;
+    left: 100%;
+    top: 0;
+}
+
 .mobilenav-menu-toggle-button {
     position: relative;
     transition: left 1s;
