@@ -131,6 +131,10 @@
     padding-left: 1em;
 }
 
+#mobilenav-mobile li li {
+    padding-right: 0;
+}
+
 #mobilenav-mobile #close-button-wrap {
     padding: 1em;
     text-align: right;
