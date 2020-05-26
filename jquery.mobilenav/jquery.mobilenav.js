@@ -26,12 +26,22 @@
         breakAt:            768,                    // maximum screen width to apply collapsed
         parentWidth:        false,                  // collapse on parent width or window width
         beforeMenu:         $.noop,                 // function to run before the showing mobile menu (runs after button click)
-        toggleButtonClasses: {                      // classes to toggle when menu button is clicked
+        beforeSubmenu:      $.noop,                 // function to run before the submenu is shown
+        // classes to toggle when button is shown
+        // [classes toggled on button element]
+        toggleButtonShownClasses: {
+            hidden: 'hidden',
+            shown: 'shown'
+        },
+        // classes to toggle when menu button is clicked
+        // [classes toggled on button element]
+        toggleMenuShownClasses: {
             hidden: 'fa-bars',
             shown: 'fa-times'
         },
-        beforeSubmenu:      $.noop,                 // before the submenu is shown
-        toggleSubmenuClasses: {                     // classes to toggle on arrow when showing submenu
+        // classes to toggle on arrow when showing submenu
+        // [classes toggle on drop icon]
+        toggleSubmenuClasses: {
             hidden: 'fa-chevron-down',
             shown: 'fa-chevron-up'
         },
@@ -44,7 +54,6 @@
         var MOBILEMENU,     // to store the mobile nav (wrapper of ul)
             FULLMENU,       // to store to the full menu (wrapper of ul)
             OPTIONS,        // stores options
-            BUTTON_ELEMENT, // reference to the button element (for toggling of classes)
             BREAKAT;        // stores the breakat value
         
         /**
@@ -78,12 +87,6 @@
             // clone main menu
             cloneMainMenu();
             
-            BUTTON.addClass('mobilenav-menu-toggle-button');
-
-            BUTTON_ELEMENT = BUTTON.hasClass('fas') ? BUTTON: BUTTON.children('.fas').eq(0);
-            
-            resize();
-            
             $(window).resize(resize); // responsive
             
             initButton(); // hanlde the button to show and hide the menu
@@ -101,6 +104,9 @@
                     e.stopPropagation();
                 }
             );
+            
+            // run the resize
+            resize();
         };
 
         /**
@@ -172,9 +178,11 @@
         };
         
         /**
-         * Hook up click event to the button.
+         * Initialize the Button to handle events.
          */
         function initButton() {
+
+            BUTTON.addClass('mobilenav-menu-toggle-button');
             
             BUTTON.on(
                 'click', function ( e ) {
@@ -201,8 +209,8 @@
                 MOBILEMENU.slideDown();
             }
 
-            BUTTON_ELEMENT.removeClass(OPTIONS.toggleButtonClasses.hidden);
-            BUTTON_ELEMENT.addClass(OPTIONS.toggleButtonClasses.shown);
+            BUTTON.removeClass(OPTIONS.toggleMenuShownClasses.hidden);
+            BUTTON.addClass(OPTIONS.toggleMenuShownClasses.shown);
             
             MOBILEMENU.addClass(OPTIONS.collapsed);
             
@@ -217,8 +225,8 @@
                 MOBILEMENU.slideUp();
             }
             
-            BUTTON_ELEMENT.removeClass(OPTIONS.toggleButtonClasses.shown);
-            BUTTON_ELEMENT.addClass(OPTIONS.toggleButtonClasses.hidden);
+            BUTTON.removeClass(OPTIONS.toggleMenuShownClasses.shown);
+            BUTTON.addClass(OPTIONS.toggleMenuShownClasses.hidden);
             
             MOBILEMENU.removeClass(OPTIONS.collapsed);
 
