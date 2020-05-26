@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>Demo Test</title>
+
+	<!-- jQuery 1.11.2 -->
+	<script src="../jquery/jquery-1.11.2.min.js"></script>
+
+	<!-- Font Awesome 5.2 -->
+	<link href="../assets/css/all.min.css" rel="stylesheet" />
+
+	<script src="jquery.mobilenav.js"></script>
+	<link rel="stylesheet" href="jquery.mobilenav.css" />
+	
+</head>
+<body>
+<nav class="mobilenav-main">
+<ul class="nav-menu" id="topMenu">
+<li><a href="#">Home</a></li>
+<li><a>What I Do</a></li>
+<li><a href="#au">About Us</a>
+	<ul class="sub-menu">
+	<li><a>Who Am I To Do</a>
+		<ul class="sub-menu">
+		<li><a href="#wai">Who Am I To Do</a></li>
+		</ul>
+	</li>
+	<li><a>What I Do</a></li>
+	</ul>
+</li>
+<li><a>What I Do</a></li>
+<li><a href="#">About Us</a>
+	<ul class="sub-menu">
+	<li><a>Who Am I To Do</a>
+		<ul class="sub-menu">
+		<li><a>I am going right</a>
+		<ul class="sub-menu" id="last">
+		<li><a>I am going left please</a></li>
+		</ul></li>
+		</ul>
+	</li>
+	<li><a>What I Do</a></li>
+	<li><a>Categories</a>
+		<ul class="sub-menu">
+			<li><a>A</a></li>
+			<li><a>A</a></li>
+			<li><a>A</a></li>
+			<li><a>A</a></li>
+			<li><a>A</a></li>
+			<li><a>A</a></li>
+			<li><a>A</a></li>
+			<li><a>A</a></li>
+			<li><a>A</a></li>
+			<li><a>A</a></li>
+			<li><a>A</a></li>
+			<li><a>A</a></li>
+			<li><a>A</a></li>
+			<li><a>A</a></li>
+			<li><a>A</a></li>
+			<li><a>A</a></li>
+			<li><a>A</a></li>
+			<li><a>A</a></li>
+			<li><a>A</a></li>
+			<li><a>B</a></li>
+			<li><a>B</a></li>
+		</ul>
+	</li>
+	</ul>
+</li>
+</ul>
+</nav>
+<div>
+<div id="push"></div>
+<div id="btn-wrap">
+<a data-slide="top" id="menuToggle"><i for="#topMenu" class="fas fa-bars"></i></a>
+</div>
+</div>
+<h1>Hello, World!</h1>
+<p>Welcome. This page can be used to test if this Mobilenav plugin works for you</p>
+<p>The following tests have been conducted:</p>
+<ul>
+	<li>Collapse at window breakpoint + Responsive</li>
+	<li>Adds a close button to the mobile menu</li>
+	<li>Close button on mobile menu works</li>
+	<li>Adding of submenu drop down icons (on both menus)</li>
+	<li>Show and hide submenus (on both menus)</li>
+</ul>
+<style>
+#menuToggle i {
+	padding: 5px;
+	border: 1px solid;
+	border-radius: 3px;
+}
+#btn-wrap {
+	padding: 1em;
+	width: 100%;
+	top: 0;
+	left: 0;
+}
+</style>
+<script>
+$(document).ready(function(){
+	$('#menuToggle i').mobilenav({breakAt:768,style:'from-right'});
+});
+</script>
+</body>
+</html>
