@@ -36,7 +36,7 @@
             shown: 'fa-chevron-up'
         },
         addHasSubmenuClass: true,                   // whether to add has submenu class
-        hasSubmenuClass:    'has-children',         // class for has submenu
+        hasSubmenuClass:    'has-submenu',         // class for has submenu
         addSubmenuIcon:     true,                   // add submenu icon
     };
     
