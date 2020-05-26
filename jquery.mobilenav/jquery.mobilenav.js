@@ -21,19 +21,19 @@
     
     $.fn.mobilenav.defaults = {
         id:                 'mobilenav-mobile',     // id top be applied to the menu wrapper
-        collapsed:          'collapsed',            // class to be used when in mobile mode
+        collapsed:          'collapsed',            // class to be used when mobile menu shown
         style:              'from-top',             // style to show the mobilenav
         breakAt:            768,                    // maximum screen width to apply collapsed
         parentWidth:        false,                  // collapse on parent width or window width
         beforeMenu:         $.noop,                 // function to run before the showing mobile menu (runs after button click)
         beforeSubmenu:      $.noop,                 // function to run before the submenu is shown
-        // classes to toggle when button is shown
+        // classes to toggle when button is shown (mobile mode)
         // [classes toggled on button element]
         toggleButtonShownClasses: {
             hidden: 'hidden',
             shown: 'shown'
         },
-        // classes to toggle when menu button is clicked
+        // classes to toggle when menu button is clicked (mobile menu shown)
         // [classes toggled on button element]
         toggleMenuShownClasses: {
             hidden: 'fa-bars',
