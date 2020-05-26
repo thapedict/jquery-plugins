@@ -41,24 +41,20 @@
     };
     
     MobileNav = function ( BUTTON, options ) {
-        
-        var MOBILEMENU,     // stores the mobile nav
-            FULLMENU,       // refeerence to the full menu
+        var MOBILEMENU,     // to store the mobile nav (wrapper of ul)
+            FULLMENU,       // to store to the full menu (wrapper of ul)
             OPTIONS,        // stores options
             BUTTON_ELEMENT, // reference to the button element (for toggling of classes)
             BREAKAT;        // stores the breakat value
         
-        // initialization
+        /**
+         * Initialize it
+         */
         function init() {
+            // The BUTTON for attribute should point (be a selector) to the full menu
+            FULLMENU = $( BUTTON.attr('for') );
             
-            /*
-            I assume that the value of the 'for' attribute of the toggle button is a selector
-            that points to the menu
-            FULLMENU and MOBILEMENU objects refer to the nav / wrapper element of the menu
-            */
-            FULLMENU = $(BUTTON.attr('for'));
-            
-            if (! FULLMENU ) {
+            if (! FULLMENU.length > 0) {
                 return; // no use going further because there is no menu
             } else {
                 FULLMENU = FULLMENU.eq(0).parent();
@@ -107,6 +103,9 @@
             );
         };
 
+        /**
+         * Clone the main menu.
+         */
         function cloneMainMenu() {
             MOBILEMENU = FULLMENU.clone(true);
             
@@ -129,7 +128,9 @@
             $('body').append(MOBILEMENU);
         }
         
-        // window resizing
+        /**
+         * Handling window resizing event.
+         */
         function resize() {
             
             // hide menu
@@ -170,7 +171,9 @@
             
         };
         
-        // init BUTTON to handle click to toggle menu
+        /**
+         * Hook up click event to the button.
+         */
         function initButton() {
             
             BUTTON.on(
@@ -189,7 +192,9 @@
             
         };
         
-        // show the menu
+        /**
+         * Show mobile menu.
+         */
         function showMenu() {
             
             if(!isSlide()){
@@ -203,7 +208,9 @@
             
         };
         
-        // hide the menu
+        /**
+         * Hide mobile menu.
+         */
         function hideMenu() {
             
             if(!isSlide()){
@@ -219,7 +226,9 @@
             
         };
         
-        // check to see if menu slides from side
+        /**
+         * Check to see if menu is sliding horizontally.
+         */
         function isSlide() {
             
             if (OPTIONS.style === 'from-left' || OPTIONS.style === 'from-right' ) {
@@ -230,7 +239,9 @@
             
         };
 
-        // adds a close button
+        /**
+         * Adds HTML markup for the close button to the mobile menu.
+         */
         function addCloseButtton() {
 
             MOBILEMENU.prepend('<div id="close-button-wrap"><a id="close-button" class="fas fa-times"></a></div>');
@@ -238,7 +249,9 @@
 
         }
         
-        // add submenus icons
+        /**
+         * Adds HTML markup for (submenu) drop down icons to the main menu.
+         */
         function addSubmenuIcon() {
 
             FULLMENU.find('.' + OPTIONS.hasSubmenuClass).each(function(){
@@ -247,7 +260,9 @@
 
         };
 
-        // handle the click of a submenu icon
+        /**
+         * Hooks click event to the drop down icons in the main menu.
+         */
         function submenuIconClick() {
 
             FULLMENU.find('.drop-menu-icon').on(
@@ -270,7 +285,10 @@
 
         }
 
-        // hide all submenuss
+        /**
+         * Hides all submenus of a specific menu.
+         * @param {jQueryObject} menu - The lement to search for submenus
+         */
         function hideAllSubmenus(menu) {
 
             menu.find('ul').each(
@@ -281,7 +299,10 @@
 
         }
 
-        // hide a single submenu
+        /**
+         * Hide a specific menu item.
+         * @param {jQueryObject} submenu - The submenu to hide.
+         */
         function hideSubmenu(submenu) {
 
             submenu.slideUp().removeClass(OPTIONS.collapsed);
