@@ -5,32 +5,32 @@
  * License: GNU General Public License v2 or later
  */
 
-.mobilenav-main .nav-menu {
+.mobilenav-full-menu-wrap .nav-menu {
     padding: 0;
     margin: 0;
 }
 
-.mobilenav-main ul {
+.mobilenav-full-menu-wrap ul {
     list-style: none;
 }
 
-.mobilenav-main .nav-menu > li {
+.mobilenav-full-menu-wrap .nav-menu > li {
     display: inline-block;
 }
 
-.mobilenav-main .nav-menu li {
+.mobilenav-full-menu-wrap .nav-menu li {
     list-style: none;
     margin: 0;
     padding: 0.5em 0.8em;
     position: relative;
 }
 
-.mobilenav-main .nav-menu a {
+.mobilenav-full-menu-wrap .nav-menu a {
     text-decoration: none;
 }
 
-.mobilenav-main .nav-menu .sub-menu,
-.mobilenav-main .nav-menu .children {
+.mobilenav-full-menu-wrap .nav-menu .sub-menu,
+.mobilenav-full-menu-wrap .nav-menu .children {
     position: absolute;
     top: 100%;
     left: 0;
@@ -42,8 +42,8 @@
     display: none;
 }
 
-.mobilenav-main .nav-menu .sub-menu .sub-menu,
-.mobilenav-main .nav-menu .children .children {
+.mobilenav-full-menu-wrap .nav-menu .sub-menu .sub-menu,
+.mobilenav-full-menu-wrap .nav-menu .children .children {
     min-width: 100%;
     left: 100%;
     top: 0;
@@ -55,10 +55,10 @@
     display: none;
 }
 
-#mobilenav-mobile,
-#mobilenav-mobile li,
-#mobilenav-mobile ul,
-#mobilenav-mobile .sub-menu {
+.mobilenav-mobile-menu-wrap,
+.mobilenav-mobile-menu-wrap li,
+.mobilenav-mobile-menu-wrap ul,
+.mobilenav-mobile-menu-wrap .sub-menu {
     list-style: none;
     display: block;
     float: none;
@@ -68,7 +68,7 @@
     background-color: #fff;
 }
 
-#mobilenav-mobile {
+.mobilenav-mobile-menu-wrap {
     position: absolute;
     z-index: 9999;
     left: 0;
@@ -77,7 +77,7 @@
     border-width: 2px 0;
 }
 
-#mobilenav-mobile.does-slide {
+.mobilenav-mobile-menu-wrap.does-slide {
     position: fixed;
     top: 0;
     height: 100%;
@@ -85,81 +85,80 @@
     overflow: overlay;
 }
 
-#mobilenav-mobile.from-left {
+.mobilenav-mobile-menu-wrap.from-left {
     left: -300px;
 }
 
-#mobilenav-mobile.from-left.collapsed {
+.mobilenav-mobile-menu-wrap.from-left.collapsed {
     left: 0;
     transition: left 1s;
     box-shadow: 2px 0px 5px #8a8a8a;
 }
 
-#mobilenav-mobile.from-right {
+.mobilenav-mobile-menu-wrap.from-right {
     left: auto;
     right: -300px;
     transition: right 1s;
 }
 
-#mobilenav-mobile.from-right.collapsed {
+.mobilenav-mobile-menu-wrap.from-right.collapsed {
     right: 0;
     transition: right 1s;
     box-shadow: -2px 0px 5px #8a8a8a;
 }
 
-#mobilenav-mobile li {
+.mobilenav-mobile-menu-wrap li {
     border-top: 1px solid #E0E0E0;
     padding: 5px;
 }
 
-#mobilenav-mobile li:first-child {
+.mobilenav-mobile-menu-wrap li:first-child {
     border-top: none;
 }
 
-#mobilenav-mobile a {
+.mobilenav-mobile-menu-wrap a {
     color: inherit;
     text-decoration: none;
     cursor: pointer;
 }
 
-#mobilenav-mobile .sub-menu {
+.mobilenav-mobile-menu-wrap .sub-menu {
     border-top: 1px solid #E0E0E0;
     display: none;
 }
 
-#mobilenav-mobile .sub-menu > li {    
+.mobilenav-mobile-menu-wrap .sub-menu > li {    
     padding-left: 1em;
 }
 
-#mobilenav-mobile li li {
+.mobilenav-mobile-menu-wrap li li {
     padding-right: 0;
 }
 
-#mobilenav-mobile #close-button-wrap {
+.mobilenav-mobile-menu-wrap #close-button-wrap {
     padding: 1em;
     text-align: right;
 }
 
-#mobilenav-mobile #close-button {
+.mobilenav-mobile-menu-wrap #close-button {
     font-size: 1.1em;
 }
 
-#mobilenav-mobile.does-slide li {
+.mobilenav-mobile-menu-wrap.does-slide li {
     padding-left: 1em;
 }
 
-#mobilenav-mobile.does-slide ul a {
+.mobilenav-mobile-menu-wrap.does-slide ul a {
     padding: 0.15em 0;
     display: inline-block;
 }
 
-.full-menu-mobilenav .drop-menu-icon,
-#mobilenav-mobile .drop-menu-icon {
+.mobilenav-full-menu .drop-menu-icon {
     float: right;
-    padding: 0.15em 0 0 0.4em;
+    padding: 0 0 0 0.4em;
 }
 
-#mobilenav-mobile .drop-menu-icon {
-    padding: 0;
-    margin: 0.35em 0.3em 0 0.4em;
+.mobilenav-mobile-menu-wrap .drop-menu-icon {
+    float: right;
+    margin: 0.35em 11px 0 0.4em;
 }

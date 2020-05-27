@@ -20,7 +20,7 @@
     };
     
     $.fn.mobilenav.defaults = {
-        id:                 'mobilenav-mobile',     // id top be applied to the menu wrapper
+        id:                 'mobilenav-mobile-wrap',// id top be applied to the menu wrapper
         collapsed:          'collapsed',            // class to be used when mobile menu shown
         style:              'from-top',             // style to show the mobilenav
         breakAt:            768,                    // maximum screen width to apply collapsed
@@ -66,11 +66,11 @@
             if (! FULLMENU.length > 0) {
                 return; // no use going further because there is no menu
             } else {
-                FULLMENU = FULLMENU.eq(0).parent();
+                FULLMENU = FULLMENU.eq(0).addClass('mobilenav-full-menu').parent();
             }
 
             // add class to show main menu has mobilenav
-            FULLMENU.addClass('full-menu-mobilenav');
+            FULLMENU.addClass('mobilenav-full-menu-wrap');
             
             OPTIONS = $.extend({}, $.fn.mobilenav.defaults, options);
 
@@ -115,13 +115,12 @@
         function cloneMainMenu() {
             MOBILEMENU = FULLMENU.clone(true);
             
-            // clear classes and id associated with actual menu
-            MOBILEMENU.attr('class', '').children('ul').each(
+            // clear classes and id from fullmenu and add mobile menu classes
+            MOBILEMENU.attr('id', OPTIONS.id).attr('class', 'mobilenav-mobile-menu-wrap').children('ul').each(
                 function () {
-                    $(this).attr('id', '').attr('class', '');
+                    $(this).attr('id', '').attr('class', 'mobilenav-mobile-menu');
                 } 
             );
-            MOBILEMENU.attr('id', OPTIONS.id);
             
             // hide menu if we are not sliding from sides
             if (isSlide() ) {
