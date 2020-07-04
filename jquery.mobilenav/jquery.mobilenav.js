@@ -161,12 +161,14 @@
                 
                 FULLMENU.hide();
                 BUTTON.show();
+                mobileTabindexOn();
                 
             } else {
                 
                 FULLMENU.show();
                 BUTTON.hide();
                 hideMenu();
+                mobileTabindexOff();
             }
             
             // position
@@ -184,7 +186,14 @@
             BUTTON.addClass('mobilenav-menu-toggle-button');
             
             BUTTON.on(
-                'click', function ( e ) {
+                'click keyup', function ( e ) {
+
+                    // prevent unintentional trigger with keyboard
+                    if('keyup'===e.type) {
+                        if(13!==e.which) {
+                            return;
+                        }
+                    }
                 
                     e.stopPropagation();
                 
@@ -251,8 +260,22 @@
          */
         function addCloseButtton() {
 
-            MOBILEMENU.prepend('<div id="close-button-wrap"><a id="close-button" class="fas fa-times"></a></div>');
-            MOBILEMENU.children('#close-button').on('click', hideMenu);
+            MOBILEMENU.prepend('<div id="close-button-wrap"><a id="close-button" class="fas fa-times" tabindex="0"></a></div>');
+            MOBILEMENU.find('div #close-button').on(
+                'click keyup',
+                function(e){
+                    // prevent unintentional trigger with keyboard
+                    if('keyup'===e.type) {
+                        if(13!==e.which) {
+                            return;
+                        }
+                    }
+
+                    e.stopPropagation();
+
+                    hideMenu();
+                }
+            );
 
         }
         
@@ -262,7 +285,7 @@
         function addSubmenuIcon() {
 
             FULLMENU.find('.' + OPTIONS.hasSubmenuClass).each(function(){
-                $(this).prepend('<i class="drop-menu-icon fas '+ OPTIONS.toggleSubmenuClasses.hidden +'"></i>');
+                $(this).children('ul').before('<i class="drop-menu-icon fas '+ OPTIONS.toggleSubmenuClasses.hidden +'" tabindex="0"></i>');
             });
 
         };
@@ -273,8 +296,15 @@
         function submenuIconClick() {
 
             FULLMENU.find('.drop-menu-icon').on(
-                'click',
+                'click keyup',
                 function(e){
+                    // prevent unintentional trigger with keyboard
+                    if('keyup'===e.type) {
+                        if(13!==e.which) {
+                            return;
+                        }
+                    }
+
                     e.stopPropagation();
 
                     // find submenu
@@ -321,6 +351,24 @@
                 dropMenuIcon.addClass(OPTIONS.toggleSubmenuClasses.hidden);
             }
 
+        }
+
+        /**
+         * Changes tabindex in mobile menu to 0.
+         */
+        function mobileTabindexOn() {
+            MOBILEMENU.find('.drop-menu-icon').attr('tabindex',0);
+            FULLMENU.find('.drop-menu-icon').attr('tabindex',-1);
+            BUTTON.attr('tabindex',0);
+        }
+
+        /**
+         * Changes tabindex in mobile menu to -1.
+         */
+        function mobileTabindexOff() {
+            FULLMENU.find('.drop-menu-icon').attr('tabindex',0);
+            MOBILEMENU.find('.drop-menu-icon').attr('tabindex',-1);
+            BUTTON.attr('tabindex',-1);
         }
         
         init();
