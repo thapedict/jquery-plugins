@@ -84,6 +84,9 @@
                 submenuIconClick();
             }
 
+            // Close submenu on esc keyup
+            closeSubOnEsc();
+
             // clone main menu
             cloneMainMenu();
             
@@ -300,7 +303,7 @@
                 function(e){
                     // prevent unintentional trigger with keyboard
                     if('keyup'===e.type) {
-                        if(13!==e.which) {
+                        if(13!==e.which && 27!==e.which) {
                             return;
                         }
                     }
@@ -314,6 +317,21 @@
                     if(submenu.hasClass(OPTIONS.collapsed)) {
                         hideSubmenu(submenu);
                     } else {
+                        if('keyup'===e.type) {
+                            // Esc key on already closed submenu closes parent
+                            if(27===e.which){
+                                var parentUL = $(this).closest('ul');
+                                
+                                // if parent is submenu, close it
+                                if(parentUL.parent('.' + OPTIONS.hasSubmenuClass).length) {
+                                    hideSubmenu(parentUL);
+                                    parentUL.siblings('.drop-menu-icon').focus();
+                                }
+    
+                                return;
+                            }
+                        }
+
                         submenu.slideDown().addClass(OPTIONS.collapsed);
                         $(this).removeClass(OPTIONS.toggleSubmenuClasses.hidden).addClass(OPTIONS.toggleSubmenuClasses.shown);
                     }
@@ -369,6 +387,23 @@
             FULLMENU.find('.drop-menu-icon').attr('tabindex',0);
             MOBILEMENU.find('.drop-menu-icon').attr('tabindex',-1);
             BUTTON.attr('tabindex',-1);
+        }
+
+        /**
+         * Add submenu close on esc keyup.
+         */
+        function closeSubOnEsc() {
+            FULLMENU.find('.' + OPTIONS.hasSubmenuClass).on('keyup',function(e){
+                if(27!==e.which){
+                    return;
+                }
+
+                // don't bubble up
+                e.stopPropagation();
+
+                hideSubmenu($(this).find('ul'));
+                $(this).siblings('.drop-menu-icon').focus();
+            });
         }
         
         init();
