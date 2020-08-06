@@ -125,13 +125,12 @@
                 } 
             );
             
-            // hide menu if we are not sliding from sides
-            if (isSlide() ) {
-                MOBILEMENU.addClass(OPTIONS.style + " does-slide");
-                addCloseButtton();
-            } else {
-                MOBILEMENU.hide();                
-            }
+            
+            MOBILEMENU.addClass(OPTIONS.style + " does-slide");
+            addCloseButtton();
+            
+            MOBILEMENU.hide();
+                
             
             $('body').append(MOBILEMENU);
         }
@@ -215,6 +214,8 @@
          * Show mobile menu.
          */
         function showMenu() {
+
+            MOBILEMENU.show();
             
             if(!isSlide()){
                 MOBILEMENU.slideDown();
@@ -242,6 +243,8 @@
             MOBILEMENU.removeClass(OPTIONS.collapsed);
 
             hideAllSubmenus(MOBILEMENU.find('ul'));
+
+            MOBILEMENU.hide();
             
         };
         
