@@ -54,7 +54,8 @@
         var MOBILEMENU,     // to store the mobile nav (wrapper of ul)
             FULLMENU,       // to store to the full menu (wrapper of ul)
             OPTIONS,        // stores options
-            BREAKAT;        // stores the breakat value
+            BREAKAT,        // stores the breakat value
+            FULLMENU_SUB_ICONS; // store fullmenu submenu icons
         
         /**
          * Initialize it
@@ -298,6 +299,8 @@
                 $(this).children('ul').before('<i class="drop-menu-icon fas '+ OPTIONS.toggleSubmenuClasses.hidden +'" tabindex="0"></i>');
             });
 
+            FULLMENU_SUB_ICONS = FULLMENU.find('.drop-menu-icon');
+
         };
 
         /**
@@ -305,7 +308,7 @@
          */
         function submenuIconClick() {
 
-            FULLMENU.find('.drop-menu-icon').on(
+            FULLMENU_SUB_ICONS.on(
                 'click keyup',
                 function(e){
                     // prevent unintentional trigger with keyboard
@@ -383,7 +386,7 @@
          */
         function mobileTabindexOn() {
             MOBILEMENU.find('.drop-menu-icon').attr('tabindex',0);
-            FULLMENU.find('.drop-menu-icon').attr('tabindex',-1);
+            FULLMENU_SUB_ICONS.attr('tabindex',-1);
             BUTTON.attr('tabindex',0);
         }
 
@@ -391,7 +394,7 @@
          * Changes tabindex in mobile menu to -1.
          */
         function mobileTabindexOff() {
-            FULLMENU.find('.drop-menu-icon').attr('tabindex',0);
+            FULLMENU_SUB_ICONS.attr('tabindex',0);
             MOBILEMENU.find('.drop-menu-icon').attr('tabindex',-1);
             BUTTON.attr('tabindex',-1);
         }
