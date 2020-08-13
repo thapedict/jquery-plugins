@@ -48,6 +48,7 @@
         addHasSubmenuClass: true,                   // whether to add has submenu class
         hasSubmenuClass:    'has-submenu',         // class for has submenu
         addSubmenuIcon:     true,                   // add submenu icon
+        clsDropMenuIcon:    'drop-menu-icon',       // class applied to drop submenu icon
     };
     
     MobileNav = function ( BUTTON, options ) {
@@ -55,7 +56,8 @@
             FULLMENU,       // to store to the full menu (wrapper of ul)
             OPTIONS,        // stores options
             BREAKAT,        // stores the breakat value
-            FULLMENU_SUB_ICONS; // store fullmenu submenu icons
+            FULLMENU_SUB_ICONS, // store fullmenu submenu icons
+            CLS_DROP_MENU_ICON; // class selector for drop-menu-icon
         
         /**
          * Initialize it
@@ -81,6 +83,12 @@
             }
 
             if(OPTIONS.addSubmenuIcon) {
+                CLS_DROP_MENU_ICON = OPTIONS.clsDropMenuIcon;
+
+                if(CLS_DROP_MENU_ICON.indexOf('.')!==0) {
+                    CLS_DROP_MENU_ICON = '.' + CLS_DROP_MENU_ICON;
+                }
+                
                 addSubmenuIcon();
                 submenuIconClick();
             }
@@ -296,10 +304,10 @@
         function addSubmenuIcon() {
 
             FULLMENU.find('.' + OPTIONS.hasSubmenuClass).each(function(){
-                $(this).children('ul').before('<i class="drop-menu-icon fas '+ OPTIONS.toggleSubmenuClasses.hidden +'" tabindex="0"></i>');
+                $(this).children('ul').before('<i class="' + OPTIONS.clsDropMenuIcon + ' fas '+ OPTIONS.toggleSubmenuClasses.hidden +'" tabindex="0"></i>');
             });
 
-            FULLMENU_SUB_ICONS = FULLMENU.find('.drop-menu-icon');
+            FULLMENU_SUB_ICONS = FULLMENU.find(CLS_DROP_MENU_ICON);
 
         };
 
@@ -335,7 +343,7 @@
                                 // if parent is submenu, close it
                                 if(parentUL.parent('.' + OPTIONS.hasSubmenuClass).length) {
                                     hideSubmenu(parentUL);
-                                    parentUL.siblings('.drop-menu-icon').focus();
+                                    parentUL.siblings(CLS_DROP_MENU_ICON).focus();
                                 }
     
                                 return;
@@ -372,7 +380,7 @@
 
             submenu.slideUp().removeClass(OPTIONS.collapsed);
 
-            var dropMenuIcon = submenu.siblings('.drop-menu-icon');
+            var dropMenuIcon = submenu.siblings(CLS_DROP_MENU_ICON);
 
             if(dropMenuIcon.length) {
                 dropMenuIcon.removeClass(OPTIONS.toggleSubmenuClasses.shown);
@@ -385,7 +393,7 @@
          * Changes tabindex in mobile menu to 0.
          */
         function mobileTabindexOn() {
-            MOBILEMENU.find('.drop-menu-icon').attr('tabindex',0);
+            MOBILEMENU.find(CLS_DROP_MENU_ICON).attr('tabindex',0);
             FULLMENU_SUB_ICONS.attr('tabindex',-1);
             BUTTON.attr('tabindex',0);
         }
@@ -395,7 +403,7 @@
          */
         function mobileTabindexOff() {
             FULLMENU_SUB_ICONS.attr('tabindex',0);
-            MOBILEMENU.find('.drop-menu-icon').attr('tabindex',-1);
+            MOBILEMENU.find(CLS_DROP_MENU_ICON).attr('tabindex',-1);
             BUTTON.attr('tabindex',-1);
         }
 
@@ -412,7 +420,7 @@
                 e.stopPropagation();
 
                 hideSubmenu($(this).find('ul'));
-                $(this).siblings('.drop-menu-icon').focus();
+                $(this).siblings(CLS_DROP_MENU_ICON).focus();
             });
         }
         
