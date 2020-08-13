@@ -217,7 +217,9 @@
 
             MOBILEMENU.show();
             
-            if(!isSlide()){
+            if(isSlide()){
+                MOBILEMENU.find('#close-button').focus();
+            }else{
                 MOBILEMENU.slideDown();
             }
 
@@ -280,6 +282,8 @@
                     e.stopPropagation();
 
                     hideMenu();
+
+                    BUTTON.focus();
                 }
             );
 
