@@ -72,6 +72,9 @@
                 FULLMENU = FULLMENU.eq(0).addClass('mobilenav-full-menu').parent();
             }
 
+            // add tab stop
+            BUTTON.attr('tabindex','0');
+            
             // add class to show main menu has mobilenav
             FULLMENU.addClass('mobilenav-full-menu-wrap');
             
@@ -88,7 +91,7 @@
                 if(CLS_DROP_MENU_ICON.indexOf('.')!==0) {
                     CLS_DROP_MENU_ICON = '.' + CLS_DROP_MENU_ICON;
                 }
-                
+
                 addSubmenuIcon();
                 submenuIconClick();
             }
@@ -172,14 +175,12 @@
                 
                 FULLMENU.hide();
                 BUTTON.show();
-                mobileTabindexOn();
                 
             } else {
                 
                 FULLMENU.show();
                 BUTTON.hide();
                 hideMenu();
-                mobileTabindexOff();
             }
             
             // position
@@ -387,24 +388,6 @@
                 dropMenuIcon.addClass(OPTIONS.toggleSubmenuClasses.hidden);
             }
 
-        }
-
-        /**
-         * Changes tabindex in mobile menu to 0.
-         */
-        function mobileTabindexOn() {
-            MOBILEMENU.find(CLS_DROP_MENU_ICON).attr('tabindex',0);
-            FULLMENU_SUB_ICONS.attr('tabindex',-1);
-            BUTTON.attr('tabindex',0);
-        }
-
-        /**
-         * Changes tabindex in mobile menu to -1.
-         */
-        function mobileTabindexOff() {
-            FULLMENU_SUB_ICONS.attr('tabindex',0);
-            MOBILEMENU.find(CLS_DROP_MENU_ICON).attr('tabindex',-1);
-            BUTTON.attr('tabindex',-1);
         }
 
         /**
