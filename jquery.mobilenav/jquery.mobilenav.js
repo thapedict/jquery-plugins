@@ -57,6 +57,7 @@
             OPTIONS,        // stores options
             BREAKAT,        // stores the breakat value
             FULLMENU_SUB_ICONS, // store fullmenu submenu icons
+            CLS_HAS_SUBMENU,    // class selector for has-submenu
             CLS_DROP_MENU_ICON; // class selector for drop-menu-icon
         
         /**
@@ -82,7 +83,12 @@
 
             // add class to li with submenu
             if(OPTIONS.addHasSubmenuClass) {
-	            FULLMENU.find('li ul').parent().addClass(OPTIONS.hasSubmenuClass);
+                FULLMENU.find('li ul').parent().addClass(OPTIONS.hasSubmenuClass);
+                CLS_HAS_SUBMENU = '.' + OPTIONS.hasSubmenuClass;
+
+                if(CLS_HAS_SUBMENU.indexOf('.')!==0) {
+                    CLS_HAS_SUBMENU = '.' + CLS_HAS_SUBMENU;
+                }
             }
 
             if(OPTIONS.addSubmenuIcon) {
@@ -304,7 +310,7 @@
          */
         function addSubmenuIcon() {
 
-            FULLMENU.find('.' + OPTIONS.hasSubmenuClass).each(function(){
+            FULLMENU.find(CLS_HAS_SUBMENU).each(function(){
                 $(this).children('ul').before('<i class="' + OPTIONS.clsDropMenuIcon + ' fas '+ OPTIONS.toggleSubmenuClasses.hidden +'" tabindex="0"></i>');
             });
 
@@ -342,7 +348,7 @@
                                 var parentUL = $(this).closest('ul');
                                 
                                 // if parent is submenu, close it
-                                if(parentUL.parent('.' + OPTIONS.hasSubmenuClass).length) {
+                                if(parentUL.parent(CLS_HAS_SUBMENU).length) {
                                     hideSubmenu(parentUL);
                                     parentUL.siblings(CLS_DROP_MENU_ICON).focus();
                                 }
@@ -394,7 +400,7 @@
          * Add submenu close on esc keyup.
          */
         function closeSubOnEsc() {
-            FULLMENU.find('.' + OPTIONS.hasSubmenuClass).on('keyup',function(e){
+            FULLMENU.find(CLS_HAS_SUBMENU).on('keyup',function(e){
                 if(27!==e.which){
                     return;
                 }
