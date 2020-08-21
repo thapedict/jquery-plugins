@@ -99,9 +99,6 @@
                 submenuIconClick();
             }
 
-            // Close submenu on esc keyup
-            closeSubOnEsc();
-
             // clone main menu
             cloneMainMenu();
             
@@ -393,23 +390,6 @@
 
         }
 
-        /**
-         * Add submenu close on esc keyup.
-         */
-        function closeSubOnEsc() {
-            FULLMENU.find(CLS_HAS_SUBMENU).on('keyup',function(e){
-                if(27!==e.which){
-                    return;
-                }
-
-                // don't bubble up
-                e.stopPropagation();
-
-                hideSubmenu($(this).find('ul'));
-                $(this).siblings(CLS_DROP_MENU_ICON).focus();
-            });
-        }
-        
         init();
     };
     
