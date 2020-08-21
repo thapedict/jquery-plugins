@@ -56,6 +56,7 @@
             OPTIONS,        // stores options
             BREAKAT,        // stores the breakat value
             FULLMENU_SUB_ICONS, // store fullmenu submenu icons
+            FULLMENU_FIRST_LEVEL, // store all first level li
             CLS_HAS_SUBMENU,    // class selector for has-submenu
             CLS_DROP_MENU_ICON; // class selector for drop-menu-icon
         
@@ -69,6 +70,7 @@
             if (! FULLMENU.length > 0) {
                 return; // no use going further because there is no menu
             } else {
+                FULLMENU_FIRST_LEVEL = FULLMENU.children();
                 FULLMENU = FULLMENU.eq(0).addClass('mobilenav-full-menu').parent();
             }
 
