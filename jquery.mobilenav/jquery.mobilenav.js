@@ -45,7 +45,6 @@
             hidden: 'fa-chevron-down',
             shown: 'fa-chevron-up'
         },
-        addHasSubmenuClass: true,                   // whether to add has submenu class
         hasSubmenuClass:    'has-submenu',         // class for has submenu
         addSubmenuIcon:     true,                   // add submenu icon
         clsDropMenuIcon:    'drop-menu-icon',       // class applied to drop submenu icon
@@ -82,13 +81,11 @@
             OPTIONS = $.extend({}, $.fn.mobilenav.defaults, options);
 
             // add class to li with submenu
-            if(OPTIONS.addHasSubmenuClass) {
-                FULLMENU.find('li ul').parent().addClass(OPTIONS.hasSubmenuClass);
-                CLS_HAS_SUBMENU = '.' + OPTIONS.hasSubmenuClass;
+            FULLMENU.find('li ul').parent().addClass(OPTIONS.hasSubmenuClass);
+            CLS_HAS_SUBMENU = '.' + OPTIONS.hasSubmenuClass;
 
-                if(CLS_HAS_SUBMENU.indexOf('.')!==0) {
-                    CLS_HAS_SUBMENU = '.' + CLS_HAS_SUBMENU;
-                }
+            if(CLS_HAS_SUBMENU.indexOf('.')!==0) {
+                CLS_HAS_SUBMENU = '.' + CLS_HAS_SUBMENU;
             }
 
             if(OPTIONS.addSubmenuIcon) {
