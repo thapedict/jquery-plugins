@@ -1,0 +1,77 @@
+/*
+jQuery Minislider
+
+@version 1.0.0
+@author Thapelo Moeti
+*/
+.minislider-wrapper {
+	position: relative;
+	overflow: hidden;
+}
+
+.minislider-wrapper > ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.minislider-wrapper .navigation {
+	position: absolute;
+	z-index: 6;
+	font-size: 2em;
+	padding: 0.5em;
+	list-style: none;
+	width: 100%;
+}
+
+
+.minislider-wrapper .navigation li {
+	display: inline-block;
+	color: #fff;
+	text-shadow: 2px 2px 5px black;
+}
+
+.minislider-wrapper .navigation .next {
+	float: right;
+	margin-right: 0.9em;
+}
+
+.minislider-wrapper .dots {
+    padding: 0;
+    margin: 0;
+}
+
+.minislider-wrapper > .dots li {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    margin-left: 5px;
+}
+
+.minislider-wrapper > .dots li.active {
+    background-color: #fff;
+}
+
+.minislider-wrapper > .dots li:first-child {
+    margin-left: auto;
+}
+
+.minislider-wrapper .slider > * {
+	float: left;
+	padding: 0;
+	border: 0;
+	margin: 0;
+	overflow: hidden;
+	position: relative;
+}
+
+.minislider-wrapper .slider > * > .caption {
+	position: absolute;
+	width: 100%;
+	top: 30%;
+	left: 5%;
+    text-shadow: 2px 2px 5px #000;
+}
+

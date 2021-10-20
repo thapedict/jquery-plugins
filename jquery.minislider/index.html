@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>jQuery Minislider</title>
+	<script src="../jquery/jquery-1.11.2.min.js"></script>
+	<script src="./jquery.minislider.js"></script>
+	<link rel="stylesheet" href="./jquery.minislider.css">
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+		}
+
+		.c1 {
+			background-color: red;
+			color: #fff;
+		}
+
+		.c2 {
+			background-color: blue;
+			color: #fff;
+		}
+
+		.c3 {
+			background-color: purple;
+			color: #fff;
+		}
+
+		.c4 {
+			background-color: black;
+			color: #fff;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="wrap">
+		<ul class="slider">
+			<li class="c1">
+				<img src="../assets/img/1.jpg" />
+				<div class="caption">
+					<h1>The Caption</h1>
+					<p>The caption subtitle must explain a lot</p>
+				</div>
+			</li>
+			<li class="c2">
+				<img src="../assets/img/2.jpg" />
+				<div class="caption">
+					<h1>The Caption</h1>
+					<p>The caption subtitle must explain a lot</p>
+				</div>
+			</li>
+			<li class="c3">
+				<img src="../assets/img/3.jpg" />
+				<div class="caption">
+					<h1>The Caption</h1>
+					<p>The caption subtitle must explain a lot</p>
+				</div>
+			</li>
+			<li class="c4">
+				<img src="../assets/img/4.jpg" />
+				<div class="caption">
+					<h1>The Caption</h1>
+					<p>The caption subtitle must explain a lot</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<script>
+		(function ($) {
+			if ($ === undefined) return;
+
+			$(document).ready(function () {
+				$('.slider').minislider({});
+			});
+		}
+		)(jQuery);
+	</script>
+</body>
+
+</html>
